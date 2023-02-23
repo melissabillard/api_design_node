@@ -1,4 +1,14 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken'
+import * as bcrypt from 'bcrypt'
+
+
+export const comparePasswords = (password, hash) => {
+    return bcrypt.compare(password, hash) // <=> promise
+}
+
+export const hashPassword = (password) => {
+    return bcrypt.hash(password, 5); // add 5 makes it harder to be hack   
+}
 
 export const createJWT = (user) => {
     const token = jwt.sign(
